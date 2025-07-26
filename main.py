@@ -64,7 +64,11 @@ def delete_visible_outgoing_messages(page: Page) -> bool:
             if sibling:
                 style = sibling.get_attribute("style")
                 if style and "--paddingInlineStart" in style:
-                    outgoing_messages.append(msg)
+                    content = msg.inner_text().strip()
+                    if "Unsupported message" not in content:
+                        outgoing_messages.append(msg)
+                    else:
+                        logging.info(f"   Unsupported message: {content}")
 
     if not outgoing_messages:
         logging.info("No visible outgoing messages to delete in this view.")
@@ -73,10 +77,11 @@ def delete_visible_outgoing_messages(page: Page) -> bool:
     logging.info(f"Found {len(outgoing_messages)} outgoing messages to delete.")
     for message in reversed(outgoing_messages):
         try:
-            content = message.inner_text().strip()
-            logging.info(f"   Removing message: {content}")
+            # content = message.inner_text().strip()
+            # logging.info(f"   Removing message: {content}")
 
             message.scroll_into_view_if_needed()
+            message.click()
             message.hover()
 
             page.wait_for_selector(MESSAGE_OPTIONS_BUTTON, timeout=1000)
@@ -87,8 +92,6 @@ def delete_visible_outgoing_messages(page: Page) -> bool:
 
             page.wait_for_selector(CONFIRM_UNSEND_BUTTON, timeout=1000)
             page.click(CONFIRM_UNSEND_BUTTON)
-
-            page.wait_for_timeout(1000)  # Wait for the unsend action to complete
 
             logging.info("   Message unsent.")
         except Error as e:
