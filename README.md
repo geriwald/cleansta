@@ -4,6 +4,20 @@ Ce guide explique étape par étape comment utiliser le script `main.py` pour ne
 
 ---
 
+## 0. Télécharger le script depuis GitHub
+
+1. Va sur la page du projet : [https://github.com/geriwald/cleansta](https://github.com/geriwald/cleansta)
+2. Clique sur le bouton vert **Code** puis sur **Download ZIP** pour télécharger tout le projet.
+3. Décompresse le fichier ZIP sur ton Bureau (ou ailleurs), tu obtiendras un dossier `cleansta` contenant le script `main.py`.
+
+Ou bien, pour télécharger uniquement le script principal :
+
+[Télécharger main.py directement](https://github.com/geriwald/cleansta/raw/main/main.py)
+
+Place le fichier téléchargé dans un dossier dédié, par exemple sur ton Bureau.
+
+---
+
 ## 1. Vérifier l'installation de Python
 
 1. Ouvre le Terminal (Applications > Utilitaires > Terminal).
@@ -21,7 +35,7 @@ Ce guide explique étape par étape comment utiliser le script `main.py` pour ne
 ## 2. Préparer le dossier de travail
 
 1. Crée un dossier sur ton Bureau, par exemple appelé `cleansta`.
-2. Place le fichier `main.py` (et les autres fichiers du projet si besoin) dans ce dossier.
+2. Place le fichier `main.py` (ou le contenu du ZIP) dans ce dossier.
 
 ---
 
